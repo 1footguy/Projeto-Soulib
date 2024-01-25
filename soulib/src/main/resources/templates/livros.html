@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Livros - Soulib</title>
+    <link rel="stylesheet" href="/css/listalivro.css" />
+    <script src="/js/main.js"></script>
+</head>
+
+<body>
+    <main>
+        <header>
+            <a id="home" href="/home">&#9666; Home</a>
+            <h1>Livros</h1>
+            <p>Lista de Livros</p>
+            <br />
+            <hr />
+            <br />
+        </header>
+        <div class="add">
+            <a href="/adicionar-livro"> Adicionar Novo Livro &#11166;</a>
+        </div>
+        <section class="cards" th:each="livro: ${listaLivros}">
+            <div class="icon">
+                <a th:href="'/livros/' + ${livro.idLivro}">
+                    <img src="/livroicon.png" alt="Icone Livro">
+                </a>
+            </div>
+            <div class="infos">
+                <a th:href="'/livros/'+${livro.idLivro}">
+                    <h3 th:text="${livro.titulo}"></h3>
+                </a>
+                <p th:text="${livro.autor}"></p>
+            </div>
+            <table>
+                <tr>
+                    <form th:action="'/livros/'+${livro.idLivro}+'/edit'" method="get">
+                        <button id="edit" type="submit">Editar</button>
+                    </form>
+                    <form action="/livros/delete" method="post">
+                        <input type="hidden" name="idLivro" id="idLivro" th:value="${livro.idLivro}">
+                        <button id="delete" type="submit">Excluir</button>
+                    </form>
+                </tr>
+            </table>
+        </section>
+    </main>
+    <script src="/js/main.js"></script>
+</body>
+</html>

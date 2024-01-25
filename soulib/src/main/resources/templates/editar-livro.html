@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editar Livro - Soulib</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/listalivro.css">
+    <script src="/js/main.js"></script>
+  </head>
+  <body>
+    <main>
+        <section id="sectionback">
+            <a th:href="'/livros/'+${livro.idLivro}">&#9666; Voltar</a>
+        </section>
+        <h1>Editar Livro</h1>
+        <hr />
+        <form action="/livros/update" method="post">
+        <!-- Na edição devemos fornecer um ID para indicar quem está sendo editado -->
+        <input type="hidden" name="idLivro" th:value="${livro.idLivro}">
+
+        <label for="titulo">Título <span style="color: red">*</span></label>
+        <input th:value="${livro.titulo}" type="text" name="titulo" id="titulo" maxlength="120" required/>
+
+        <label for="autor">Autor <span style="color: red">*</span></label>
+        <input th:value="${livro.autor}" type="text" name="autor" id="autor" maxlength="80" required/>
+
+        <label for="editora">Editora</label>
+        <input th:value="${livro.editora}" type="text" name="editora" id="editora" maxlength="40" required/>
+
+        <label for="paginas">Qtd páginas</label>
+        <input th:value="${livro.paginas}" type="number" name="paginas" id="paginas" required/>
+
+        <label for="descricao">Descrição</label>
+        <textarea th:text="${livro.descricao}" name="descricao" id="descricao" maxlength="180" cols="30" rows="10" required></textarea>
+
+        <br><button id="enviar" type="submit">Enviar</button>
+        <footer></footer>
+    </form>
+    </main>
+</body>
+</html>

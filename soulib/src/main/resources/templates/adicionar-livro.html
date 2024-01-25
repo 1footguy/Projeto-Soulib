@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Livro</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    </head>
+<body>
+    <main>
+        <form action="livros/create" method="post">
+            <br><h2>Adicionar Livro ao Banco de Dados</h2><hr>
+            <fieldset>
+                <legend align="left">Informações</legend>
+                <!-- Na inserção, atente-se para os campos do Model -->
+                <label for="titulo">Titulo <span style="color: red">*</span></label>
+                <input type="text" name="titulo" id="titulo" maxlength="100" required/>
+        
+                <label for="autor">Autor <span style="color: red">*</span></label>
+                <input type="tel" name="autor" id="autor" maxlength="42" required/>
+                
+                <label for="editora">Editora <span style="color: red">*</span></label>
+                <input type="editora" name="editora" id="editora" maxlength="120">
+
+                <label for="paginas">Qtd Paginas <span style="color: red">*</span></label>
+                <input type="number" name="paginas" id="paginas" maxlength="120">
+
+                <label for="descricao">Descrição <span style="color: red">*</span></label>
+                <textarea name="descricao" id="descricao" cols="30" rows="10"></textarea>
+              
+                <p>Campos preenchidos com <span style="color: red">*</span> são obrigatórios. </p>
+                <br />
+        
+                <button type="submit">Enviar</button>
+            </fieldset>
+          </form>
+    </main>    
+</body>
+</html>

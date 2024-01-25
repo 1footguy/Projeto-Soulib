@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clientes Soulib</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="/js/main.js"></script>
+  </head>
+  <body>
+    <a id="home" href="/home">&#9666; Home</a>
+    <main>
+      <h1>Clientes</h1>
+      <p>Lista de clientes</p>
+      <hr />
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>Editar</th>
+            <th>Excluir</th>
+          </tr>
+        </thead>
+        <!-- Na tag que se repete digitar TH:EACH -->
+        <!-- Equivale ao for:each, sintaxe = th:each="nomevariavel" : ${nome do array/vetor} -->
+        <tbody>
+          <!-- Na tag que se repete aplique th:each -->
+          <tr th:each="cliente : ${listaCliente}">
+            <td>
+              <a th:href="'/clientes/'+${cliente.idCliente}" th:text="${cliente.nome}"></a>
+            </td>
+            <td th:text="${cliente.email}"></td>
+            <td th:text="${cliente.telefone}"></td>
+            <td>
+              <a th:href="'/clientes/'+${cliente.idCliente}+'/edit'">
+                <button id="edit">Editar</button>
+              </a>
+            </td>
+            <td>
+              <!-- name = o mesmo definido no RequestParam do controller -->
+              <form action="/clientes/delete" method="post">
+                <input type="hidden" name="id" th:value="${cliente.idCliente}"/>
+                <button id="delete" type="submit">Excluir</button>
+              </form>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+  </table>
+  <hr />
+      <h2> Novo Cliente</h2>
+      <form action="clientes/create" method="post">
+        <fieldset>
+          <legend align="left">Cadastrar</legend>
+          <!-- Na inserção, atente-se para os campos do Model -->
+          <label for="nome">Nome <span style="color: red">*</span></label>
+          <input type="text" name="nome" id="nome" maxlength="100" required/>
+  
+          <label for="telefone">Telefone <span style="color: red">*</span></label>
+          <input type="tel" name="telefone" id="telefone" maxlength="42" required/>
+          
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" maxlength="120">
+  
+          <p>Campos preenchidos com <span style="color: red">*</span> são obrigatórios. </p>
+          <br />
+  
+          <button type="submit">Enviar</button>
+        </fieldset>
+      </form>
+      <footer></footer>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emprestimos - Soulib</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <a href="/home">&#9666; Home</a>
+    <main>
+      <h1>Emprestimos</h1>
+      <p>Lista de emprestimos</p>
+      <hr />
+      <div class="add">
+        <a href="/novo-emprestimo"> Novo Emprestimo &#11166;</a>
+      </div><br>
+      <table>
+        <thead>
+          <tr>
+            <th>Cliente</th>
+            <th>Livro</th>
+            <th>Data Emprestimo</th>
+            <th>Data Devolução</th>
+            <th>Finalizado?</th>
+            <th>Editar</th>
+            <th>Excluir</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="emprestimo : ${listaEmprestimos}">
+            <td th:text="${emprestimo.cliente.nome}"></td>
+            <td th:text="${emprestimo.livroEmprestado.titulo}"></td>
+            <td th:text="${#temporals.format(emprestimo.dataRealizada)}"></td>
+            <td th:text="${#temporals.format(emprestimo.dataDevolucao)}"></td>
+            <td th:text="${emprestimo.finalizado ? 'SIM' : 'NÃO'} "></td>
+            <td>
+              <form th:action="'/emprestimos/'+${emprestimo.idEmprestimo}+'/edit'" method="get">
+                <button id="edit" type="submit">Editar</button>
+              </form>
+            </td>
+            <td>
+              <form action="/emprestimos/delete" method="post">
+                <input type="hidden" name="idEmprestimo" th:value="${emprestimo.idEmprestimo}"/>
+                <input type="hidden" name="idCliente" th:value="${emprestimo.cliente.idCliente}"> 
+                <input type="hidden" name="idLivro" th:value="${emprestimo.livroEmprestado.idLivro}"> 
+                <input type="hidden" name="emprestimoFim" th:value="${emprestimo.finalizado}"> 
+                <button id="delete" type="submit">Excluir</button>
+              </form>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+     </main>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

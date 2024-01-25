@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editar empréstimo - Soulib</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="/js/main.js"></script>
+  </head>
+  <body>
+    <main>
+      <section id="sectionback">
+        <a href="/">&#9666; Home</a>
+      </section>
+      <h2>Editar Empréstimo</h2>
+      <hr />
+      <form action="/emprestimos/update" method="post">
+        <input type="hidden" name="idEmprestimo" th:value="${emprestimo.idEmprestimo}">
+
+        <label for="dataRealizada">Data Realizada<span style="color: red">*</span></label>
+        <input th:value="${emprestimo.dataRealizada}" type="date" name="dataRealizada" id="dataRealizada" required />
+
+        <label for="dataDevolucao">Data Devolução<span style="color: red">*</span></label>
+        <input th:value="${emprestimo.dataDevolucao}" type="date" name="dataDevolucao" id="dataDevolucao" required />
+
+        <label for="finalizado">
+          <input th:checked="${emprestimo.finalizado}" type="checkbox" name="finalizado" id="finalizado"/>Finalizado?
+        </label>
+        <input type="hidden" name="idCliente" th:value="${emprestimo.cliente.idCliente}">
+        <input type="hidden" name="idLivro" th:value="${emprestimo.livroEmprestado.idLivro}">
+        <br><button id="enviar" type="submit">Enviar</button>
+      </form>
+    </main>
+  </body>
+</html>

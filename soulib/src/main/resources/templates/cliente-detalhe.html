@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cliente detalhes</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <style>
+        a{
+          position:absolute;
+        }
+        button,
+        input[type="button"],
+        input[type="submit"] {
+          margin: 7px;
+          background-color: #ef233c;
+          color: #fff;
+          padding: 5px 10px;
+          border: none;
+          border-radius: 3px;
+          cursor: pointer;
+          font-family: "Lato", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section id="sectionback">
+        <a href="/clientes">&#9666; Voltar</a>
+      </section>
+      <h1 th:text="${cliente.nome}"></h1> <!-- nome declarado no modelandview do controller-->
+      <p th:text="'Email: ' + ${cliente.email}"></p>
+      <p>Telefone: <span th:text="${cliente.telefone}"></span></p>
+      <table>
+        <tr>
+          <form th:action="'/clientes/' + ${cliente.idCliente}+'/edit'" method="get">
+            <button id="edit">Editar</button>
+          </form>
+          <form action="/clientes/delete" method="post">
+            <input type="hidden" name="id" th:value="${cliente.idCliente}"/>
+            <button id="delete" type="submit">Excluir</button>
+          </form>
+        </tr>
+      </table>
+    </main>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

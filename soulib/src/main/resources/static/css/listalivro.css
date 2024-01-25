@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@1,300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    position: absolute;
+    font-size: 1.05rem;
+    background-color: #f6f9ff;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    color: #434343;
+  }
+  main{
+    height: 100vh;
+    width: 100%;
+    text-align: center;
+  }
+  main #home{
+    position: absolute;
+  }
+  main section a{
+    text-align: left;
+  }
+  main .cards{
+    font-family: 'Shantell Sans',sans-serif;
+    text-align: center;
+    margin: 10px;
+    display: inline-block;
+    padding: 10px;
+  }
+  .icon{
+    margin: auto;
+    height: 20vh;
+  }
+  img {
+    height: 100%;
+  }
+  a{
+    font-family: 'Shantell Sans',sans-serif;
+    text-align: center;
+    color: #ef233c;
+    text-decoration: none;
+  }
+  header{
+    text-align: left;
+    padding: 0vh 0 3vh 0;
+  }
+  header h1, p{
+    text-align: center;
+  }
+  button,
+  input[type="button"],
+  input[type="submit"] {
+    margin: 7px;
+    background-color: #ef233c;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: "Lato", sans-serif;
+}
+#edit{
+  background-color: #023e8a;
+}
+#delete{
+  background-color: #b9041c;
+}
+#edit:hover{
+  background-color: #2272da;
+}
+#delete:hover{
+  background-color: #df1b32;
+}
