@@ -15,8 +15,4 @@ public class HomeController {
     public String paginaHome(){
         return "index";
     }
-    @GetMapping("/contatos")
-    public String paginaContato(){
-        return "contatos";
-    }
 }
